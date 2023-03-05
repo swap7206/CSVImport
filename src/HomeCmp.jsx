@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Grid, List, ListItem, Paper } from "@mui/material";
 import CSVFilePicker from "./CSVFilePicker";
+import { keyboardImplementationWrapper } from "@testing-library/user-event/dist/keyboard";
 // import CSVReaderCmp
 // import AccordionListCmp
 const HomeCmp = () => {
@@ -20,7 +21,7 @@ const HomeCmp = () => {
 	};
 
 	console.info("data", csvFiles);
-	const headerKeys = Object.keys(Object.assign({}, ...csvFiles));
+	const headerKeys = Object.keys(Object.assign({}, ...csvFiles)).map((headerKey) => (headerKey.split('.')[1]));
 
 
 	return (
